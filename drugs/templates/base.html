@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>  
+	<title>FreeMedForms</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="description" content="Drug database"/>
+    <meta name="keywords"
+          content="ratp, metro, rer, tramway, transports, paris, france, trafic, incidents"/>
+    <meta name="robots" content="index,follow"/>
+	<link rel="stylesheet" type="text/css" href="/public/css/styles.css" />
+	<link rel="stylesheet" type="text/css" href="/public/css/blue-green.css" media="screen" />
+	{% block extra_js %}{% endblock %}
+</head>
+<body>
+	
+	<div id="header">
+		<div id="menu_nav" class="page">
+	        <a href="/home" class="logo">FreeMedForm Database</a>
+	        <ul>
+	            <li><a href="{% url drugs.views.index %}">Accueil</a></li>
+	        </ul>
+			<div class="clear"></div>
+	    </div>
+	</div>
+	{% block content %} {% endblock %}
+	<div id="footer" class="page">
+		<p>FreeMedForms 2010.</p>
+		<ul>
+            <li><a href="{% url drugs.views.index %}">Accueil</a></li>
+        </ul>
+		<div class="clear"></div>
+	</div>
+	
+</body>
+</html>

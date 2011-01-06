@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<div id="page">
+			
+	<div class="top"></div>
+	<div class="content">
+		
+		<div class="header page">
+			<h1>Results for query '{{ query }}'</h1>
+		</div>
+		<div id="html_elements" class="padding">     
+	<p> The following list of drugs were found :      
+		<ul>
+		{% for drug in drugs %}
+		    <li><a href="{% url drugs.views.drug_detail drug.uid %}">{{ drug.name }} ;</a></li>
+		{% endfor %}                  
+		</ul>
+	 </p>
+  </div>
+ </div>
+<div class="bottom"></div>
+</div>
+{% endblock %}
