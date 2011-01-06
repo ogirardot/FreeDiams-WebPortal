@@ -25,4 +25,17 @@ create database openreact;
 	ALTER TABLE `drugs_packaging` ADD ID INT UNSIGNED NOT NULL AUTO_INCREMENT,
 	  ADD PRIMARY KEY (ID);
 	ALTER TABLE `drugs_lk_mol_atc` ADD ID INT UNSIGNED NOT NULL AUTO_INCREMENT,
-	  ADD PRIMARY KEY (ID);
+	  ADD PRIMARY KEY (ID);                                 
+	
+	 alter table DB_SCHEMA_VERSION rename iam_dbschemaversion;
+	 alter table IAM_TREE rename iam_tree;
+	 alter table INTERACTION_KNOWLEDGE rename iam_interactionknowledge; 
+	 alter table INTERACTIONS rename iam_interaction;
+	 alter table SOURCES rename iam_source;
+	 alter table ATC rename iam_atc;     
+	
+	ALTER TABLE `iam_dbschemaversion` ADD ID INT UNSIGNED NOT NULL AUTO_INCREMENT,
+		  ADD PRIMARY KEY (ID);                      
+		ALTER TABLE `iam_tree` ADD ID INT UNSIGNED NOT NULL AUTO_INCREMENT,
+			  ADD PRIMARY KEY (ID);
+	
