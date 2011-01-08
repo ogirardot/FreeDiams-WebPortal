@@ -15,7 +15,8 @@ class DbSchemaVersion(models.Model):
 	date = models.DateField(null=True, db_column=u'DATE', blank=True) # Field name made lowercase.
 	comment = models.CharField(max_length=500, db_column=u'COMMENT', blank=True) # Field name made lowercase.
 
-class Tree(models.Model):
+class Tree(models.Model):                            
+    id = models.IntegerField(null=True, primary_key=True, db_column=u'ID') # Field name made lowercase.
     id_class = models.IntegerField(db_column=u'ID_CLASS') # Field name made lowercase.
     id_atc = models.IntegerField(db_column=u'ID_ATC') # Field name made lowercase.
     source_link = models.IntegerField(null=True, db_column=u'SOURCE_LINK', blank=True) # Field name made lowercase.
@@ -51,5 +52,5 @@ class Source(models.Model):
     link = models.CharField(max_length=200, db_column=u'LINK', blank=True) # Field name made lowercase.
     textual_reference = models.CharField(max_length=1000, db_column=u'TEXTUAL_REFERENCE', blank=True) # Field name made lowercase.
     abstract = models.CharField(max_length=4000, db_column=u'ABSTRACT', blank=True) # Field name made lowercase.
-    explanation = models.CharField(max_length=4000, db_column=u'EXPLANATION', blank=True) # Field name made lowercase.
+    explanation = models.CharField(max_length=4000, db_column=u'EXPLANATION', null=True, blank=True) # Field name made lowercase.
 
