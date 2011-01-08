@@ -6,18 +6,17 @@
 	<div class="content">
 		
 		<div class="header page">
-			<h1>Looking for a specific drug ?</h1>
+			<h1>Bienvenue</h1>
 		</div>
-		
 		<div id="html_elements" class="padding">
+			<p>Cette plateforme sert de version alpha pour accéder à la base de données des interactions médicamenteuses du logiciel de prescription FreeDiams - du <a href="http://www.freemedforms.com/">projet FreeMedForms</a>. Vous pouvez d'ores et déjà effectuer des <a href="{% url drugs.views.index %}">recherches sur les médicaments</a>, et <a href="{% url drugs.views.drug_interaction %}">vérifier les interactions</a> entre plusieurs médicaments.</a></p>  
 			<form method="POST" action="{% url drugs.views.search %}"> 
-				
 				<label for="q">Name (or part of name) : </label>
 			    <input name="q" type="text" size="50"/>
 				<input type="submit" name="search" value="Search"/>
 			</form>
-		</div>
-		
+			<p>Une API REST a été mise en place pour ouvrir ces données, voir la page <a href="{% url drugs.views.api %}">API</a> pour plus d'information.</p>
+		</div> 
 	</div>
 	<div class="bottom"></div>
 </div>

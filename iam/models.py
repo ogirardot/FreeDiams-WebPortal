@@ -1,14 +1,7 @@
-# This is an auto-generated Django model module.
-# You'll have to do the following manually to clean this up:
-#     * Rearrange models' order
-#     * Make sure each model has one field with primary_key=True
-# Feel free to rename the models, but don't rename db_table values or field names.
-#
-# Also note: You'll have to insert the output of 'django-admin.py sqlcustom [appname]'
-# into your database.
+# -*- coding: latin1 -*-
 
 from django.db import models
-
+    
 class Atc(models.Model):
     id = models.IntegerField(null=True, primary_key=True, db_column=u'ID', blank=True) # Field name made lowercase.
     code = models.CharField(max_length=7, db_column=u'CODE', blank=True) # Field name made lowercase.
@@ -32,7 +25,13 @@ class Interaction(models.Model):
     atc_id1 = models.IntegerField(db_column=u'ATC_ID1') # Field name made lowercase.
     atc_id2 = models.IntegerField(db_column=u'ATC_ID2') # Field name made lowercase.
     interaction_knowledge_id = models.IntegerField(null=True, db_column=u'INTERACTION_KNOWLEDGE_ID', blank=True) # Field name made lowercase.
-
+    
+INTERACTION_TYPE=dict({
+	"I": "Information",
+	"P": "Precaution d'utilisation",
+	"T": "A prendre en compte",
+	"D": "Déconseillé",
+	"C": "Contre-indication"})
 class InteractionKnowledge(models.Model):
     id = models.IntegerField(null=True, primary_key=True, db_column=u'ID', blank=True) # Field name made lowercase.
     type = models.CharField(max_length=10, db_column=u'TYPE') # Field name made lowercase.
@@ -41,6 +40,9 @@ class InteractionKnowledge(models.Model):
     risk_en = models.CharField(max_length=2000, db_column=u'RISK_EN') # Field name made lowercase.
     management_en = models.CharField(max_length=2000, db_column=u'MANAGEMENT_EN', blank=True) # Field name made lowercase.
     references_link = models.CharField(max_length=100, db_column=u'REFERENCES_LINK', blank=True) # Field name made lowercase.
+    def getInteractionType(self):
+		return INTERACTION_TYPE[self.type]
+		
 
 class Source(models.Model):
     id = models.IntegerField(null=True, primary_key=True, db_column=u'ID', blank=True) # Field name made lowercase.

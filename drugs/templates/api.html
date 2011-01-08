@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<div id="page">
+			
+	<div class="top"></div>
+	<div class="content">
+		
+		<div class="header page">
+			<h1>API</h1>
+		</div>
+		<div id="html_elements" class="padding">
+		<p>Une API REST a été mise en place pour ouvrir les données du projet FreeMedForms, elle se limite pour l'instant à une recherche par nom de médicaments, et la récuperation de son UID, elle s'utilise comme le montrent les exemples ci-après :</p>
+		<p>L'url générale est <i>/api/drugs.{format_desiré}/{debut_du_nom_du_medicament}</i> ou encore sous la forme suivante <i>/api/drugs.{format_desiré}?limit={nombre_limite_de_resultats}&amp;q={nom}</i>, exemples :
+		   <ul>
+		    <li><a href="/api/drugs.json/aspirine">/api/drugs.json/aspirine</a></li>
+		    <li>/api/drugs.json?limit=10&amp;q=aspirine</li>
+		   </ul>
+		Pour des raisons de performance les requêtes sont limitées à 50 résultats maximum. 
+		</p>
+		</div> 
+	</div>
+	<div class="bottom"></div>
+</div>
+{% endblock %}

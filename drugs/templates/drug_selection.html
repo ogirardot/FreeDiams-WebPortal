@@ -1,0 +1,117 @@
+{% extends "base.html" %}   
+{% block extra_js %}   
+<style type="text/css">
+/*
+---
+
+description: A plugin for enabling autocomplete of a text input or textarea.
+
+authors:
+ - Fábio Miranda Costa
+
+license: MIT-style license
+
+...
+*/
+
+.ma-container{
+    color: #000;
+    border: 1px solid #333;
+    background-color: #fff;
+    position: absolute;
+    visibility: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.ma-container ul{
+    list-style: none;
+    overflow: hidden;
+    width: 100%;
+}
+.ma-container li{
+    padding: 2px 5px;
+    line-height: 16px;
+    cursor: pointer;
+    float: left;
+    width: 100%;
+    overflow: hidden;
+}
+.ma-container .ma-hover{
+    color: #fff;
+    background-color: #921506 !important;
+}
+.ma-container .ma-odd{
+}
+.ma-container .ma-even{
+    background-color: #efefef;
+}
+.ma-loading{
+    background-color: #fafba4;
+}
+.ma-selected{
+    background-color: #ccfda8;
+}
+</style>                                                           
+<script type="text/javascript" src="/public/js/mootools-core-1.3.js"></script>    
+<script type="text/javascript" src="/public/js/mootools-more.js"></script>
+<script type="text/javascript" src="/public/js/Meio.Autocomplete.js" charset="utf-8"></script>
+<script type="text/javascript">            
+window.addEvent('domready', function() {
+     
+  $('drug_form').addEvent('submit', function(){
+	var options = $('drugs_select').options;
+	var size = options.length
+	var values = ""
+	for (i=0; i<size;i++ ) {
+		values += options[i].value + ","
+	}                                   
+	$('drugs').set('value', values)
+	
+  });
+
+  new Meio.Autocomplete.Select($('drug_name'), '/api/drugs.json', {
+    valueFilter: function(data){
+        return data;
+    },
+  	onSelect: function(elements, value){
+		$('drugs_select').add(new Option(value.name, value.uid));
+		var options = $('drugs_select').options;
+		options[options.length-1].set('selected', 'true');
+		$('drug_name').set('value', '');
+	},
+    filter: {
+        type: 'contains',
+        path: 'name'
+    },
+    requestOptions:{
+		method: 'get',
+    }   
+  });     
+});
+</script>
+{% endblock %}
+{% block content %}
+<div id="page">
+			
+	<div class="top"></div>
+	<div class="content">
+		
+		<div class="header page">
+			<h1>Looking for a specific drug ?</h1>
+		</div>
+		
+		<div id="html_elements" class="padding">
+			<form id="drug_form" method="POST" action="{% url drugs.views.drug_interaction %}"> 
+				
+				<label for="drug_name">Name (or part of name) : </label>
+			    <input id="drug_name" name="drug_name" type="text" size="50"/>
+				<select id="drugs_select" disabled="true" multiple="true"></select>
+				<input id="drugs" name="drugs" type="hidden"/>
+				<input type="submit" name="search" value="Look for interactions"/>
+			</form>
+		</div>
+		
+	</div>
+	<div class="bottom"></div>
+</div>
+{% endblock %}
