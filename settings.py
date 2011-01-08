@@ -1,5 +1,5 @@
 import os
-# Django settings for OpenReAct project.
+# Django settings for FreeDiamsWebPortal project.
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -11,7 +11,7 @@ ADMINS = (
 MANAGERS = ADMINS
 
 # django project root, automatically adapt to your on plateform
-OPENREACT_DJANGO_ROOT_PATH = os.path.dirname(os.path.realpath(__file__))
+WEB_PORTAL_DJANGO_ROOT_PATH = os.path.dirname(os.path.realpath(__file__))
 
 LOCAL_DEVELOPMENT = True
 
@@ -51,7 +51,7 @@ USE_L10N = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = OPENREACT_DJANGO_ROOT_PATH + '/media/'
+MEDIA_ROOT = WEB_PORTAL_DJANGO_ROOT_PATH + '/media/'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
@@ -81,13 +81,13 @@ MIDDLEWARE_CLASSES = (
 	'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'OpenReAct.urls'
+ROOT_URLCONF = 'FreeDiamsWebPortal.urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.   
-	OPENREACT_DJANGO_ROOT_PATH + '/drugs/templates'
+	WEB_PORTAL_DJANGO_ROOT_PATH + '/drugs/templates'
 )
 
 INSTALLED_APPS = (
@@ -96,8 +96,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
-    'OpenReAct.iam',
-    'OpenReAct.drugs',
+    'FreeDiamsWebPortal.iam',
+    'FreeDiamsWebPortal.drugs',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:

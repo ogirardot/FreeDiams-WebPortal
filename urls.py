@@ -6,11 +6,11 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',        
-    (r'^api/', include('OpenReAct.api.urls')),
+    (r'^api/', include('FreeDiamsWebPortal.api.urls')),
     (r'^admin/', include(admin.site.urls)),
 )                                             
 # drug part :
-urlpatterns += patterns('OpenReAct.drugs.views',
+urlpatterns += patterns('FreeDiamsWebPortal.drugs.views',
     (r'^interaction/?$', 'drug_interaction'),   
 	(r'^drug/(?P<uid>[0-9]*)/?$', 'drug_detail'),
 	(r'^search/?$', 'search'),

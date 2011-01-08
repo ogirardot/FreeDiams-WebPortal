@@ -1,6 +1,6 @@
 from django.conf.urls.defaults import *
 from piston.resource import Resource
-from OpenReAct.api.handlers import DrugHandler
+from FreeDiamsWebPortal.api.handlers import DrugHandler
 
 drug_handler = Resource(DrugHandler)
 
