@@ -6,8 +6,8 @@ class Atc(models.Model):
     id = models.IntegerField(null=True, primary_key=True, db_column=u'ID', blank=True) # Field name made lowercase.
     code = models.CharField(max_length=7, db_column=u'CODE', blank=True) # Field name made lowercase.
     english = models.CharField(max_length=127, db_column=u'ENGLISH', blank=True) # Field name made lowercase.
-    french = models.CharField(max_length=127, db_column=u'FRENCH', blank=True) # Field name made lowercase.
-    deutsch = models.CharField(max_length=127, db_column=u'DEUTSCH', blank=True) # Field name made lowercase.
+    french = models.CharField(max_length=127, db_column=u'FRENCH', null=True, blank=True) # Field name made lowercase.
+    deutsch = models.CharField(max_length=127, db_column=u'DEUTSCH', null=True, blank=True) # Field name made lowercase.
 
 class DbSchemaVersion(models.Model):   
 	id = models.IntegerField(null=True, primary_key=True, db_column=u'ID', blank=True) # Field name made lowercase.
@@ -35,11 +35,11 @@ INTERACTION_TYPE=dict({
 class InteractionKnowledge(models.Model):
     id = models.IntegerField(null=True, primary_key=True, db_column=u'ID', blank=True) # Field name made lowercase.
     type = models.CharField(max_length=10, db_column=u'TYPE') # Field name made lowercase.
-    risk_fr = models.CharField(max_length=2000, db_column=u'RISK_FR') # Field name made lowercase.
-    management_fr = models.CharField(max_length=2000, db_column=u'MANAGEMENT_FR', blank=True) # Field name made lowercase.
+    risk_fr = models.CharField(max_length=2000, db_column=u'RISK_FR', null=True, blank=True) # Field name made lowercase.
+    management_fr = models.CharField(max_length=2000, db_column=u'MANAGEMENT_FR', null=True, blank=True) # Field name made lowercase.
     risk_en = models.CharField(max_length=2000, db_column=u'RISK_EN') # Field name made lowercase.
-    management_en = models.CharField(max_length=2000, db_column=u'MANAGEMENT_EN', blank=True) # Field name made lowercase.
-    references_link = models.CharField(max_length=100, db_column=u'REFERENCES_LINK', blank=True) # Field name made lowercase.
+    management_en = models.CharField(max_length=2000, db_column=u'MANAGEMENT_EN', null=True, blank=True) # Field name made lowercase.
+    references_link = models.CharField(max_length=100, db_column=u'REFERENCES_LINK', null=True, blank=True) # Field name made lowercase.
     def getInteractionType(self):
 		return INTERACTION_TYPE[self.type]
 		
